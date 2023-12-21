@@ -1073,19 +1073,19 @@ void mode_8_directions_camera(struct Camera *c) {
     f32 dist;
 
     Vec3f z = {0,0,0};
+    z[1] = gMarioState->pos[1];
     vec3f_get_dist_and_angle(gMarioState->pos, z, &dist, &pitch, &yaw);
 
     vec3f_set_dist_and_angle(z, c->pos, 2000.0f, pitch, yaw + 0x8000);
 
     c->focus[0] = 0;
     c->focus[2] = 0;
-    c->focus[1] = 0;
+    c->focus[1] = gMarioState->pos[1];
 
     c->nextYaw = yaw + 0x8000;
 
 
     c->pos[1] = gMarioState->pos[1] + 500.0f;
-    // set_camera_height(c, gMarioState->pos[1] + 500.0f);
 }
 
 /**
