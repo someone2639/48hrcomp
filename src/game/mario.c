@@ -1699,6 +1699,28 @@ void queue_rumble_particles(struct MarioState *m) {
 }
 #endif
 
+void vec3_saturate(Vec3f v, f32 mag) {
+    f32 new_mag = vec3_mag(v);
+
+    new_mag = (mag / new_mag);
+
+    v[0] *= new_mag;
+    v[1] *= new_mag;
+    v[2] *= new_mag;
+}
+
+void correct_mario_position(struct MarioState *m) {
+    #define MAXMAG 600.0f
+    #define MINMAG 600.0f
+    if (vec3_mag(m->pos) > MAXMAG) {
+        vec3_saturate(m->pos, MAXMAG);
+    }
+
+    if (vec3_mag(m->pos) < MINMAG) {
+        vec3_saturate(m->pos, MINMAG);
+    }
+}
+
 /**
  * Main function for executing Mario's behavior. Returns particleFlags.
  */
@@ -1788,6 +1810,8 @@ s32 execute_mario_action(UNUSED struct Object *obj) {
 #if ENABLE_RUMBLE
         queue_rumble_particles(gMarioState);
 #endif
+
+        correct_mario_position(gMarioState);
 
         return gMarioState->particleFlags;
     }
