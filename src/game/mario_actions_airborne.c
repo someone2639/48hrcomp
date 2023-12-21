@@ -910,7 +910,12 @@ s32 act_ground_pound(struct MarioState *m) {
     u32 stepResult;
     f32 yOffset;
 
-    play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
+    if (m->marioObj->platform) {
+        m->actionState = ACT_STATE_GROUND_POUND_FALL;
+    }
+    else {
+        play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
+    }
 
     if (m->actionState == 0) {
         if (m->actionTimer < 10) {
@@ -923,7 +928,7 @@ s32 act_ground_pound(struct MarioState *m) {
         }
 
         m->vel[1] = -50.0f;
-        mario_set_forward_vel(m, 0.0f);
+        // mario_set_forward_vel(m, 0.0f);
 
         set_mario_animation(m, m->actionArg == ACT_ARG_GROUND_POUND_NORMAL ? MARIO_ANIM_START_GROUND_POUND
                                                                            : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
@@ -952,6 +957,16 @@ s32 act_ground_pound(struct MarioState *m) {
                 play_mario_heavy_landing_sound(m, SOUND_ACTION_TERRAIN_HEAVY_LANDING);
                 if (!check_fall_damage(m, ACT_HARD_BACKWARD_GROUND_KB)) {
                     m->particleFlags |= PARTICLE_MIST_CIRCLE | PARTICLE_HORIZONTAL_STAR;
+
+                    // struct Object *mfo = m->floor->object;
+                    // if (
+                    //     mfo
+                    //     && mfo->behavior == segmented_to_virtual(bhvBreakableBox)
+                    // )
+                    // {
+
+                    // } else {
+                    // }
                     set_mario_action(m, ACT_GROUND_POUND_LAND, 0);
                 }
             }

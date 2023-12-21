@@ -1014,7 +1014,7 @@ s32 act_ground_pound_land(struct MarioState *m) {
     }
 
     if (m->input & INPUT_OFF_FLOOR) {
-        return set_mario_action(m, ACT_FREEFALL, 0);
+        return set_mario_action(m, ACT_GROUND_POUND, 0);
     }
 
     if (m->input & INPUT_ABOVE_SLIDE) {
