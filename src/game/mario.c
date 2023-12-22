@@ -1726,6 +1726,8 @@ void correct_mario_position(struct MarioState *m) {
     if (v2mag(m->pos[0], m->pos[2]) < MINMAG) {
         vec3_saturate(m->pos, MINMAG);
     }
+
+    osSyncPrintf("MY %f", m->pos[1]);
 }
 
 /**

@@ -19,15 +19,29 @@ struct ObjectHitbox sBreakableBoxHitbox = {
     /* hurtboxHeight:     */ 200,
 };
 
+#include "actors/circlepiececol/collision_header.h"
+
+Collision *cdata[] = {
+    circlepiececol_collision,
+    circlepiececol_lava,
+    circlepiececol_FINISH,
+};
+
 void breakable_box_init(void) {
-    o->oHiddenObjectSwitchObj = NULL;
-    o->oAnimState = BREAKABLE_BOX_ANIM_STATE_CORK_BOX;
-    switch (o->oBehParams2ndByte) {
-        case BREAKABLE_BOX_BP_NO_COINS: o->oNumLootCoins = 0; break;
-        case BREAKABLE_BOX_BP_3_COINS:  o->oNumLootCoins = 3; break;
-        case BREAKABLE_BOX_BP_5_COINS:  o->oNumLootCoins = 5; break;
-        case BREAKABLE_BOX_BP_LARGE:    cur_obj_scale(1.5f);  break;
+    int bp = o->oBehParams2ndByte;
+
+    switch (bp) {
+        case 0x26:
+            obj_set_collision_data(o, cdata[2]);
+        break;
+        case 1:
+            obj_set_collision_data(o, cdata[1]);
+        break;
+        default:
+            obj_set_collision_data(o, cdata[0]);
+        break;
     }
+
 }
 
 void hidden_breakable_box_actions(void) {

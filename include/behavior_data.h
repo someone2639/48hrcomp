@@ -545,3 +545,4 @@ extern const BehaviorScript bhvUnusedFakeStar[];
 
 extern const BehaviorScript bhvwCoolball[];
 extern const BehaviorScript bhvlayerSpawner[];
+extern const BehaviorScript bhvStaticSlice[];

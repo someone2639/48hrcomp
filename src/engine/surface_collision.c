@@ -582,12 +582,33 @@ f32 unused_find_dynamic_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfl
 /**
  * Find the highest floor under a given position and return the height.
  */
+
+struct Surface defaultSurf = {
+    .normal.y = 1.0f,
+};
+
 f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.collision_floor);
     PUPPYPRINT_GET_SNAPSHOT();
 
     f32 height        = FLOOR_LOWER_LIMIT;
     f32 dynamicHeight = FLOOR_LOWER_LIMIT;
+
+    struct MarioState *m = gMarioState;
+    defaultSurf.lowerY = m->floorHeight - 5;
+    defaultSurf.upperY = m->floorHeight + 5;
+
+    defaultSurf.vertex1[1] = 
+    defaultSurf.vertex2[1] = 
+    defaultSurf.vertex3[1] = m->floorHeight;
+
+    defaultSurf.vertex3[0] = m->pos[0];
+    defaultSurf.vertex1[0] = m->pos[0] - 0x100;
+    defaultSurf.vertex2[0] = m->pos[0] + 0x100;
+
+    defaultSurf.vertex3[2] = m->pos[2];
+    defaultSurf.vertex1[2] = m->pos[2] - 0x100;
+    defaultSurf.vertex2[2] = m->pos[2] + 0x100;
 
     //! (Parallel Universes) Because position is casted to an s16, reaching higher
     //  float locations can return floors despite them not existing there.
@@ -640,6 +661,9 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 
     // Return the floor.
     *pfloor = floor;
+    if (*pfloor == NULL) {
+        *pfloor = &defaultSurf;
+    }
 #ifdef VANILLA_DEBUG
     // Increment the debug tracker.
     gNumCalls.floor++;

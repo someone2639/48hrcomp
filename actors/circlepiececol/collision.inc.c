@@ -25,3 +25,60 @@ const Collision circlepiececol_collision[] = {
 	COL_TRI_STOP(),
 	COL_END()
 };
+
+const Collision circlepiececol_lava[] = {
+	COL_INIT(),
+	COL_VERTEX_INIT(8),
+	COL_VERTEX(-286, -168, 141),
+	COL_VERTEX(-282, -168, -169),
+	COL_VERTEX(454, -154, -357),
+	COL_VERTEX(445, -154, 347),
+	COL_VERTEX(454, 151, -357),
+	COL_VERTEX(445, 151, 347),
+	COL_VERTEX(-286, 156, 141),
+	COL_VERTEX(-282, 156, -169),
+	COL_TRI_INIT(SURFACE_BURNING, 12),
+	COL_TRI(0, 1, 2),
+	COL_TRI(0, 2, 3),
+	COL_TRI(4, 5, 3),
+	COL_TRI(4, 3, 2),
+	COL_TRI(6, 7, 1),
+	COL_TRI(6, 1, 0),
+	COL_TRI(7, 6, 5),
+	COL_TRI(7, 5, 4),
+	COL_TRI(0, 3, 5),
+	COL_TRI(0, 5, 6),
+	COL_TRI(2, 1, 7),
+	COL_TRI(2, 7, 4),
+	COL_TRI_STOP(),
+	COL_END()
+};
+
+const Collision circlepiececol_FINISH[] = {
+	COL_INIT(),
+	COL_VERTEX_INIT(8),
+	COL_VERTEX(-286, -168, 141),
+	COL_VERTEX(-282, -168, -169),
+	COL_VERTEX(454, -154, -357),
+	COL_VERTEX(445, -154, 347),
+	COL_VERTEX(454, 151, -357),
+	COL_VERTEX(445, 151, 347),
+	COL_VERTEX(-286, 156, 141),
+	COL_VERTEX(-282, 156, -169),
+	COL_TRI_INIT(SURFACE_SUPER_SLIPPERY, 12),
+	COL_TRI(0, 1, 2),
+	COL_TRI(0, 2, 3),
+	COL_TRI(4, 5, 3),
+	COL_TRI(4, 3, 2),
+	COL_TRI(6, 7, 1),
+	COL_TRI(6, 1, 0),
+	COL_TRI(7, 6, 5),
+	COL_TRI(7, 5, 4),
+	COL_TRI(0, 3, 5),
+	COL_TRI(0, 5, 6),
+	COL_TRI(2, 1, 7),
+	COL_TRI(2, 7, 4),
+	COL_TRI_STOP(),
+	COL_END()
+};
+
