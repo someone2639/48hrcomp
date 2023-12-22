@@ -3579,15 +3579,15 @@ layer_end
 chan_setbank 5
 chan_setinstr 7
 chan_setlayer 0, .layer_1582
-chan_setlayer 1, .layer_1582
+#chan_setlayer 1, .layer_1582
 chan_end
 
 .layer_1582:
-layer_somethingon
+# layer_somethingon
 layer_portamento 0x85, 39, 255
-layer_note1 36, 0x14, 110
-layer_note1 38, 0x10, 110
-layer_note1 27, 0x64, 110
+#layer_note1 36, 0x14, 110
+#layer_note1 38, 0x10, 110
+layer_note1 39, 96, 127
 layer_end
 
 .sound_general_door_insert_key:
