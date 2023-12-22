@@ -574,6 +574,7 @@
 
 enum model48 {
     MODEL_WBALL = 0x100,
+    MODEL_SLICE,
 };
 
 

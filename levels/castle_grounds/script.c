@@ -48,14 +48,15 @@ const LevelScript level_castle_grounds_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_FLAG, castle_grounds_geo_000660), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_CANNON_GRILL, castle_grounds_geo_000724), 
 	LOAD_MODEL_FROM_GEO(MODEL_WBALL, wCoolball_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_SLICE, circlepiece_geo), 
 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, castle_grounds_area_1),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xF0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xF1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_WBALL, -218, 29986, 378, 0, 0, 0, 0x00000000, bhvwCoolball),
 		OBJECT(MODEL_BREAKABLE_BOX, 236, 29786, -499, 0, 0, 0, 0x00000000, bhvBreakableBox),
 		OBJECT(MODEL_BREAKABLE_BOX, -218, 29986, 578, 0, 0, 0, 0x00000000, bhvBreakableBox),
@@ -104,6 +105,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_BREAKABLE_BOX, 236, 18622, -699, 0, 0, 0, 0x00000000, bhvBreakableBox),
 		MARIO_POS(0x01, 0, 541, 29861, -62),
 		OBJECT(MODEL_NONE, 541, 29861, -62, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
+		OBJECT(MODEL_NONE, 0, 30311, 0, 0, 0, 0, 0x00000000, bhvlayerSpawner),
 		TERRAIN(castle_grounds_area_1_collision),
 		MACRO_OBJECTS(castle_grounds_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
