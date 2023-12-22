@@ -18,3 +18,4 @@
 #include "mario/geo.inc.c"
 
 #include "wCoolball/geo.inc.c"
+#include "circlepiece/geo.inc.c"

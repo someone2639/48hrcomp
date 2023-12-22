@@ -32,3 +32,4 @@
 #endif
 
 #include "wCoolball/model.inc.c"
+#include "circlepiece/model.inc.c"

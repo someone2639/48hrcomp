@@ -1,0 +1,14 @@
+extern const GeoLayout circlepiece_geo[];
+extern u8 circlepiece_Brick_i8[];
+extern u8 circlepiece_E005C90_ci4[];
+extern u8 circlepiece_E005C90_ci4_pal_rgba16[];
+extern Vtx circlepiece_Circle_mesh_layer_1_vtx_0[20];
+extern Gfx circlepiece_Circle_mesh_layer_1_tri_0[];
+extern Vtx circlepiece_Circle_mesh_layer_1_vtx_1[4];
+extern Gfx circlepiece_Circle_mesh_layer_1_tri_1[];
+extern Gfx mat_circlepiece_f3dlite_material_001[];
+extern Gfx mat_revert_circlepiece_f3dlite_material_001[];
+extern Gfx mat_circlepiece_f3dlite_material_004[];
+extern Gfx mat_revert_circlepiece_f3dlite_material_004[];
+extern Gfx circlepiece_Circle_mesh_layer_1[];
+extern Gfx circlepiece_material_revert_render_settings[];

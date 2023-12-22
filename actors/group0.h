@@ -333,4 +333,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "wCoolball/geo_header.h"
 
+#include "circlepiece/geo_header.h"
+
 #endif
