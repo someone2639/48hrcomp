@@ -86,3 +86,4 @@ void spawn_red_coin_cutscene_star(f32 x, f32 y, f32 z); // spawn_star.c
 #endif // OBJ_BEHAVIORS_H
 
 void bhv_wCoolball_init(void); void bhv_wCoolball_loop(void);
+void bhv_layerSpawner_init(void); void bhv_layerSpawner_loop(void);

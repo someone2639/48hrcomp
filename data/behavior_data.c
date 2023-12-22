@@ -6093,3 +6093,14 @@ const BehaviorScript bhvwCoolball[] = {
 	END_LOOP(),
 };
 // update_air_without_turn
+
+
+extern void bhv_layerSpawner_init();
+extern void bhv_layerSpawner_loop();
+const BehaviorScript bhvlayerSpawner[] = {
+	BEGIN(OBJ_LIST_DEFAULT),
+	CALL_NATIVE(bhv_layerSpawner_init),
+	BEGIN_LOOP(),
+		CALL_NATIVE(bhv_layerSpawner_loop),
+	END_LOOP(),
+};

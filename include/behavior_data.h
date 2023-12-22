@@ -544,3 +544,4 @@ extern const BehaviorScript bhvUnusedFakeStar[];
 #endif // BEHAVIOR_DATA_H
 
 extern const BehaviorScript bhvwCoolball[];
+extern const BehaviorScript bhvlayerSpawner[];
