@@ -335,4 +335,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "circlepiece/geo_header.h"
 
+#include "circlepiececol/collision_header.h"
+
 #endif

@@ -33,3 +33,4 @@
 
 #include "wCoolball/model.inc.c"
 #include "circlepiece/model.inc.c"
+#include "circlepiececol/collision.inc.c"
