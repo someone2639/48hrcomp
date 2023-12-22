@@ -1076,7 +1076,7 @@ void mode_8_directions_camera(struct Camera *c) {
     z[1] = gMarioState->pos[1];
     vec3f_get_dist_and_angle(gMarioState->pos, z, &dist, &pitch, &yaw);
 
-    vec3f_set_dist_and_angle(z, c->pos, 4000.0f, pitch, yaw + 0x8000);
+    vec3f_set_dist_and_angle(z, c->pos, 5000.0f, pitch, yaw + 0x8000);
 
     c->focus[0] = 0;
     c->focus[2] = 0;
@@ -1085,7 +1085,7 @@ void mode_8_directions_camera(struct Camera *c) {
     c->nextYaw = yaw + 0x8000;
 
 
-    c->pos[1] = gMarioState->pos[1] + 2000.0f;
+    c->pos[1] = gMarioState->pos[1] + 3000.0f;
 
     // osSyncPrintf("CPOS %f %f %f", c->pos[0], c->pos[1], c->pos[2]);
     // osSyncPrintf("CF %f %f %f", c->focus[0], c->focus[1], c->focus[2]);

@@ -1728,6 +1728,9 @@ void correct_mario_position(struct MarioState *m) {
     }
 
     osSyncPrintf("MY %f", m->pos[1]);
+
+    print_text_fmt_int(10, 10, "BOUNCES: %d", m->numBounces);
+    // print_text_fmt_int(10, 20, "BOUNCES: %d", m->numBounces);
 }
 
 /**
@@ -1837,6 +1840,8 @@ void init_mario(void) {
     gMarioState->actionTimer = 0;
     gMarioState->framesSinceA = 0xFF;
     gMarioState->framesSinceB = 0xFF;
+
+    gMarioState->numBounces = 0;
 
     gMarioState->invincTimer = 0;
 

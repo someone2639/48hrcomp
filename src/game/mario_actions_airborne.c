@@ -2000,6 +2000,7 @@ s32 act_special_triple_jump(struct MarioState *m) {
                 m->hurtCounter += 36;
                 return set_mario_action(m, ACT_LAVA_BOOST, 0);
             }
+            m->numBounces++;
             m->vel[1] = 100.0f;
 
             play_sound(

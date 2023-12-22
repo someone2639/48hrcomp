@@ -59,15 +59,21 @@ void bhv_layerSpawner_init(void) {
 		}
 
 
-		#define ANGLE_CENTER 0x400
-		struct Object *oc = spawn_object_relative(bp, 0, yPos, 0, o, MODEL_SLICE, behavs[0]);
-		oc->oMoveAngleYaw = baseYaw + ANGLE_CENTER + (D_ANGLE * endcount);
-		oc->oFaceAngleYaw = baseYaw + ANGLE_CENTER + (D_ANGLE * endcount);
-		oc->oAnimState = 3;
-		obj_set_collision_data(oc, circlepiececol_collision);
-		vec3f_set_dist_and_angle(z, &oc->oPosVec, 800, 0, baseYaw + ANGLE_CENTER + (D_ANGLE * endcount) + 0x4000);
+		if (j != 0) {
+			#define ANGLE_CENTER 0x400
+			struct Object *oc = spawn_object_relative(bp, 0, yPos, 0, o, MODEL_SLICE, behavs[0]);
+			oc->oMoveAngleYaw = baseYaw + ANGLE_CENTER + (D_ANGLE * endcount);
+			oc->oFaceAngleYaw = baseYaw + ANGLE_CENTER + (D_ANGLE * endcount);
+			oc->oAnimState = 3;
+			obj_set_collision_data(oc, circlepiececol_collision);
+			vec3f_set_dist_and_angle(z, &oc->oPosVec, 800, 0, baseYaw + ANGLE_CENTER + (D_ANGLE * endcount) + 0x4000);
+			oc->header.gfx.scale[2] *= 1.5f;
+		}
 
 		baseYaw += 0x1000 * (random_float() < 0.5f ? 2 : 1) * random_sign();
+		if (random_float() < 0.2f) {
+			baseYaw += 0x8000;
+		}
 	}
 
 	osSyncPrintf("LAST J %f", o->oPosY + (j * LAYER_DENSITY));
