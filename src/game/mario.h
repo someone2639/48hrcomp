@@ -53,4 +53,7 @@ s32 execute_mario_action(UNUSED struct Object *obj);
 void init_mario(void);
 void init_mario_from_save_file(void);
 
+    #define MAXMAG 600.0f
+    #define MINMAG 600.0f
+
 #endif // MARIO_H

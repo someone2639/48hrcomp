@@ -1087,8 +1087,8 @@ void mode_8_directions_camera(struct Camera *c) {
 
     c->pos[1] = gMarioState->pos[1] + 500.0f;
 
-    osSyncPrintf("CPOS %f %f %f", c->pos[0], c->pos[1], c->pos[2]);
-    osSyncPrintf("CF %f %f %f", c->focus[0], c->focus[1], c->focus[2]);
+    // osSyncPrintf("CPOS %f %f %f", c->pos[0], c->pos[1], c->pos[2]);
+    // osSyncPrintf("CF %f %f %f", c->focus[0], c->focus[1], c->focus[2]);
 }
 
 /**

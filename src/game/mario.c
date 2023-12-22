@@ -1719,8 +1719,6 @@ void vec3_saturate(Vec3f v, f32 mag) {
 
 
 void correct_mario_position(struct MarioState *m) {
-    #define MAXMAG 600.0f
-    #define MINMAG 600.0f
     if (v2mag(m->pos[0], m->pos[2]) > MAXMAG) {
         vec3_saturate(m->pos, MAXMAG);
     }

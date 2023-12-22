@@ -906,6 +906,24 @@ s32 act_steep_jump(struct MarioState *m) {
     return FALSE;
 }
 
+void gp_adjyaw(struct MarioState *m) {
+    #define GP_MULTIPLIER 16.0f
+
+    Vec3f z = {0,0,0};
+    z[1] = m->pos[1];
+    s16 pitch;
+    s16 yaw;
+
+    f32 dist;
+    vec3f_get_dist_and_angle(m->pos, z, &dist, &pitch, &yaw);
+    if (abs(m->controller->stickX) > 14) {
+        yaw += m->controller->stickX * GP_MULTIPLIER;
+    }
+
+    vec3f_set_dist_and_angle(z, m->pos, MINMAG, 0, yaw + 0x8000);
+    // mario_set_forward_vel(m, 0.0f);
+}
+
 s32 act_ground_pound(struct MarioState *m) {
     u32 stepResult;
     f32 yOffset;
@@ -928,8 +946,7 @@ s32 act_ground_pound(struct MarioState *m) {
         }
 
         m->vel[1] = -50.0f;
-        update_walking_speed(m);
-        // mario_set_forward_vel(m, 0.0f);
+        // update_walking_speed(m);
 
         set_mario_animation(m, m->actionArg == ACT_ARG_GROUND_POUND_NORMAL ? MARIO_ANIM_START_GROUND_POUND
                                                                            : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
@@ -945,6 +962,7 @@ s32 act_ground_pound(struct MarioState *m) {
     } else {
         set_mario_animation(m, MARIO_ANIM_GROUND_POUND);
 
+        gp_adjyaw(m);
         stepResult = perform_air_step(m, 0);
         if (stepResult == AIR_STEP_LANDED) {
             if (should_get_stuck_in_ground(m)) {
