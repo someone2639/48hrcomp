@@ -199,6 +199,8 @@ void update_air_with_turn(struct MarioState *m) {
 }
 
 void update_air_without_turn(struct MarioState *m) {
+    gp_adjyaw(m);
+    return;
     f32 sidewaysSpeed = 0.0f;
     f32 dragThreshold;
     s16 intendedDYaw;
@@ -1978,9 +1980,9 @@ s32 act_vertical_wind(struct MarioState *m) {
 }
 
 s32 act_special_triple_jump(struct MarioState *m) {
-    if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, ACT_DIVE, 0);
-    }
+    // if (m->input & INPUT_B_PRESSED) {
+    //     return set_mario_action(m, ACT_DIVE, 0);
+    // }
 
     if (m->input & INPUT_Z_PRESSED) {
         return set_mario_action(m, ACT_GROUND_POUND, 0);
@@ -1992,12 +1994,12 @@ s32 act_special_triple_jump(struct MarioState *m) {
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
-            if (m->actionState++ == ACT_STATE_SPECIAL_TRIPLE_JUMP_SPINNING) {
-                m->vel[1] = 42.0f;
-            } else {
-                set_mario_action(m, ACT_FREEFALL_LAND_STOP, 0);
-            }
-            play_mario_landing_sound(m, SOUND_ACTION_TERRAIN_LANDING);
+            m->vel[1] = 100.0f;
+
+            play_sound(
+                (m->controller->buttonDown & A_BUTTON) ? SOUND_GENERAL_CRAZY_BOX_BOING_FAST : SOUND_GENERAL_CRAZY_BOX_BOING_SLOW,
+                m->marioObj->header.gfx.cameraToObject
+            );
             break;
 
         case AIR_STEP_HIT_WALL:
@@ -2006,9 +2008,10 @@ s32 act_special_triple_jump(struct MarioState *m) {
     }
 
     if (m->actionState == ACT_STATE_SPECIAL_TRIPLE_JUMP_SPINNING || m->vel[1] > 0.0f) {
-        if (set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING) == 0) {
-            play_sound(SOUND_ACTION_SPIN, m->marioObj->header.gfx.cameraToObject);
-        }
+        // if (set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING) == 0) {
+        //     // play_sound(SOUND_ACTION_BOUNCE_OFF_OBJECT, m->marioObj->header.gfx.cameraToObject);
+            
+        // }
     } else {
         set_mario_animation(m, MARIO_ANIM_GENERAL_FALL);
     }

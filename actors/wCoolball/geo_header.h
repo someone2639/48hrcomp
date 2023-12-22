@@ -1,0 +1,12 @@
+extern const GeoLayout wCoolball_geo[];
+extern Lights1 wCoolball_f3dlite_material_001_lights;
+extern u8 wCoolball_Material1_i8[];
+extern Vtx wCoolball_Sphere_mesh_layer_1_vtx_0[129];
+extern Gfx wCoolball_Sphere_mesh_layer_1_tri_0[];
+extern Vtx wCoolball_Sphere_mesh_layer_1_vtx_1[122];
+extern Gfx wCoolball_Sphere_mesh_layer_1_tri_1[];
+extern Gfx mat_wCoolball_f3dlite_material[];
+extern Gfx mat_revert_wCoolball_f3dlite_material[];
+extern Gfx mat_wCoolball_f3dlite_material_001[];
+extern Gfx wCoolball_Sphere_mesh_layer_1[];
+extern Gfx wCoolball_material_revert_render_settings[];

@@ -6080,3 +6080,16 @@ const BehaviorScript bhvIntroScene[] = {
 };
 
 
+
+
+extern void bhv_wCoolball_init();
+extern void bhv_wCoolball_loop();
+const BehaviorScript bhvwCoolball[] = {
+	BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+	CALL_NATIVE(bhv_wCoolball_init),
+	BEGIN_LOOP(),
+		CALL_NATIVE(bhv_wCoolball_loop),
+	END_LOOP(),
+};
+// update_air_without_turn

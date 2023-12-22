@@ -1819,6 +1819,7 @@ s32 execute_mario_action(UNUSED struct Object *obj) {
 #endif
 
         correct_mario_position(gMarioState);
+        gMarioState->marioObj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 
         return gMarioState->particleFlags;
     }
@@ -1877,8 +1878,9 @@ void init_mario(void) {
 
     gMarioState->marioObj->header.gfx.pos[1] = gMarioState->pos[1];
 
-    gMarioState->action =
-        (gMarioState->pos[1] <= (gMarioState->waterLevel - 100)) ? ACT_WATER_IDLE : ACT_IDLE;
+    // gMarioState->action =
+    //     (gMarioState->pos[1] <= (gMarioState->waterLevel - 100)) ? ACT_WATER_IDLE : ACT_IDLE;
+    gMarioState->action = ACT_SPECIAL_TRIPLE_JUMP;
 
     mario_reset_bodystate(gMarioState);
     update_mario_info_for_cam(gMarioState);

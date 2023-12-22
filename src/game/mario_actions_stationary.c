@@ -104,6 +104,7 @@ s32 check_common_hold_idle_cancels(struct MarioState *m) {
 
 //! TODO: actionArg names
 s32 act_idle(struct MarioState *m) {
+    return set_mario_action(m, ACT_SPECIAL_TRIPLE_JUMP, 0);
     if (m->quicksandDepth > 30.0f) {
         return set_mario_action(m, ACT_IN_QUICKSAND, 0);
     }
@@ -1021,7 +1022,7 @@ s32 act_ground_pound_land(struct MarioState *m) {
         return set_mario_action(m, ACT_BUTT_SLIDE, 0);
     }
 
-    landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_BUTT_SLIDE_STOP);
+    landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_SPECIAL_TRIPLE_JUMP);
     return FALSE;
 }
 
