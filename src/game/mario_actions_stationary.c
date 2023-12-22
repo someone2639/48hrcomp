@@ -900,11 +900,11 @@ s32 act_backflip_land_stop(struct MarioState *m) {
 s32 act_lava_boost_land(struct MarioState *m) {
     m->input &= ~(INPUT_FIRST_PERSON | INPUT_B_PRESSED);
 
-    if (check_common_landing_cancels(m, 0)) {
-        return TRUE;
-    }
+    // if (check_common_landing_cancels(m, 0)) {
+    //     return TRUE;
+    // }
 
-    landing_step(m, MARIO_ANIM_STAND_UP_FROM_LAVA_BOOST, ACT_IDLE);
+    landing_step(m, MARIO_ANIM_STAND_UP_FROM_LAVA_BOOST, ACT_SPECIAL_TRIPLE_JUMP);
     return FALSE;
 }
 

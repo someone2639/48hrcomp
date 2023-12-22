@@ -6108,7 +6108,7 @@ const BehaviorScript bhvlayerSpawner[] = {
 const BehaviorScript bhvStaticSlice[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(circlepiececol_collision),
+    // LOAD_COLLISION_DATA(circlepiececol_collision),
     SET_FLOAT(oCollisionDistance, 32000),
     // CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),

@@ -15,6 +15,7 @@
 #include "save_file.h"
 #include "rumble_init.h"
 
+#include "behavior_data.h"
 #include "config.h"
 
 void play_flip_sounds(struct MarioState *m, s16 frame1, s16 frame2, s16 frame3) {
@@ -947,7 +948,7 @@ s32 act_ground_pound(struct MarioState *m) {
             }
         }
 
-        m->vel[1] = -50.0f;
+        m->vel[1] = -200.0f;
         // update_walking_speed(m);
 
         set_mario_animation(m, m->actionArg == ACT_ARG_GROUND_POUND_NORMAL ? MARIO_ANIM_START_GROUND_POUND
@@ -1992,8 +1993,13 @@ s32 act_special_triple_jump(struct MarioState *m) {
 
     update_air_without_turn(m);
 
+
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
+            if (m->floor->type == SURFACE_BURNING) {
+                m->hurtCounter += 36;
+                return set_mario_action(m, ACT_LAVA_BOOST, 0);
+            }
             m->vel[1] = 100.0f;
 
             play_sound(

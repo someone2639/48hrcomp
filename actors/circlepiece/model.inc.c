@@ -391,7 +391,12 @@ Gfx circlepiece_Circle_mesh_layer_1_tri_1[] = {
 
 Gfx mat_circlepiece_f3dlite_material_001[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetCombineLERP(
+		TEXEL0, 0, SHADE, 0,
+		ENVIRONMENT, 0, SHADE, 0,
+		TEXEL0, 0, ENVIRONMENT, 0,
+		ENVIRONMENT, 0, SHADE, 0
+	),
 	gsSPClearGeometryMode(G_LIGHTING),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPTileSync(),
@@ -413,7 +418,12 @@ Gfx mat_revert_circlepiece_f3dlite_material_001[] = {
 
 Gfx mat_circlepiece_f3dlite_material_004[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetCombineLERP(
+		TEXEL0, 0, SHADE, 0,
+		ENVIRONMENT, 0, SHADE, 0,
+		TEXEL0, 0, ENVIRONMENT, 0,
+		ENVIRONMENT, 0, SHADE, 0
+	),
 	gsSPClearGeometryMode(G_LIGHTING),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureLUT(G_TT_RGBA16),
@@ -450,6 +460,52 @@ Gfx circlepiece_Circle_mesh_layer_1[] = {
 	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_004),
 	gsSPEndDisplayList(),
 };
+
+Gfx cLava[] = {
+	gsDPPipeSync(),
+	gsDPSetEnvColor(255, 0,0,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_001),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_001),
+	gsDPPipeSync(),
+	gsDPSetEnvColor(255, 0,0,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_004),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_1),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_004),
+	gsSPEndDisplayList(),
+};
+
+Gfx cFinish[] = {
+	gsDPPipeSync(),
+	gsDPSetEnvColor(255, 255,255,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_001),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_001),
+	gsDPPipeSync(),
+	gsDPSetEnvColor(255, 255,255,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_004),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_1),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_004),
+	gsSPEndDisplayList(),
+};
+
+Gfx cBreak[] = {
+	gsDPPipeSync(),
+	gsDPSetEnvColor(191, 151, 50,255),
+	// gsDPSetEnvColor(0,255,0,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_001),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_001),
+	gsDPPipeSync(),
+	gsDPSetEnvColor(191, 151, 50,255),
+	// gsDPSetEnvColor(0,255,0,255),
+	gsSPDisplayList(mat_circlepiece_f3dlite_material_004),
+	gsSPDisplayList(circlepiece_Circle_mesh_layer_1_tri_1),
+	gsSPDisplayList(mat_revert_circlepiece_f3dlite_material_004),
+	gsSPEndDisplayList(),
+};
+
+
 
 Gfx circlepiece_material_revert_render_settings[] = {
 	gsDPPipeSync(),
